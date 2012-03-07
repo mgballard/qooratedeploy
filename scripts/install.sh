@@ -55,8 +55,8 @@ apt-get -y install \
     autoconf \
     libzmq-dev \
     build-essential \
-    ragel\
-    redis\
+    ragel \
+    redis-server \
     privbind
 
 ##
