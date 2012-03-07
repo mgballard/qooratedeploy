@@ -1,24 +1,24 @@
 #!/bin/sh
-if [ -f `/home/brubeck/deployment/run/control` ]; then
-    pid=`cat /home/brubeck/deployment/run/control`
+if [ -f `/home/deploy/deployment/run/control` ]; then
+    pid=`cat /home/deploy/deployment/run/control`
     kill $pid
-    rm -f `/home/brubeck/deployment/run/control`
+    rm -f `/home/deploy/deployment/run/control`
 fi
 
-if [ -f `/home/brubeck/deployment/run/procer.pid` ]; then
-    pid=`cat /home/brubeck/deployment/run/procer.pid`
+if [ -f `/home/deploy/deployment/run/procer.pid` ]; then
+    pid=`cat /home/deploy/deployment/run/procer.pid`
     kill $pid
-    rm -f `/home/brubeck/deployment/run/procer.pid`
+    rm -f `/home/deploy/deployment/run/procer.pid`
 fi
 
 if [ -f `/home/brubeck/deployment/run/mongrel2.pid` ]; then
-    pid=`cat /home/brubeck/deployment/run/mongrel2.pid`
+    pid=`cat /home/deploy/deployment/run/mongrel2.pid`
     kill $pid
-    rm -f `/home/brubeck/deployment/run/mongrel2.pid`
+    rm -f `/home/deploy/deployment/run/mongrel2.pid`
 fi
 
 if [ -f `/home/brubeck/deployment/run/qoorateserver/pid` ]; then
-    pid=`cat /home/brubeck/deployment/run/qoorateserver/pid`
+    pid=`cat /home/deploy/deployment/run/qoorateserver/pid`
     kill $pid
-    rm -f `/home/brubeck/deployment/run/qoorateserver/pid`
+    rm -f `/home/deploy/deployment/run/qoorateserver/pid`
 fi
