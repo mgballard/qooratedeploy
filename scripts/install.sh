@@ -173,6 +173,8 @@ sudo pip install requests==0.10.6
 sudo pip install boto==2.2.2
 sudo pip install redis==2.4.11
 sudo pip install PyMySQL==0.5
+sudo pip install python-magic==0.4.2
+sudo pip install PIL==1.1.7
 
 ###
 ### Brubeck Packages

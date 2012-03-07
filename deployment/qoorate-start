@@ -1,5 +1,3 @@
 #!/bin/sh
-export DEPLOY_USER_HOME="/home/deploy"
-cd "$DEPLOY_USER_HOME/deployment"
-sudo procer "$DEPLOY_USER_HOME/deployment/profiles" \ 
-            "$DEPLOY_USER_HOME/deployment/run/procer.pid"
+cd "/home/deploy/deployment"
+sudo procer "/home/deploy/deployment/profiles" "/home/deploy/deployment/run/procer.pid"
