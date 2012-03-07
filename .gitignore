@@ -1,0 +1,5 @@
+*.pid
+pid
+*.log
+*.pyc
+control

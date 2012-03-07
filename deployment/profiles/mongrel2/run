@@ -1,0 +1,6 @@
+#!/bin/sh
+export DEPLOY_USER_HOME="/home/deploy"
+
+cd "$DEPLOY_USER_HOME/deployment"
+m2sh load -config ./config/mongrel2.conf -db ./config/the.db
+m2sh start -db ./config/the.db -name main

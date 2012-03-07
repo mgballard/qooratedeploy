@@ -1,0 +1,3 @@
+#!/bin/sh
+cd ~/deployment
+sudo procer ./profiles ./run/procer.pid

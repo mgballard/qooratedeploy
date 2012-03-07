@@ -1,0 +1,24 @@
+#!/bin/sh
+if [ -f `/home/brubeck/deployment/run/control` ]; then
+    pid=`cat /home/brubeck/deployment/run/control`
+    kill $pid
+    rm -f `/home/brubeck/deployment/run/control`
+fi
+
+if [ -f `/home/brubeck/deployment/run/procer.pid` ]; then
+    pid=`cat /home/brubeck/deployment/run/procer.pid`
+    kill $pid
+    rm -f `/home/brubeck/deployment/run/procer.pid`
+fi
+
+if [ -f `/home/brubeck/deployment/run/mongrel2.pid` ]; then
+    pid=`cat /home/brubeck/deployment/run/mongrel2.pid`
+    kill $pid
+    rm -f `/home/brubeck/deployment/run/mongrel2.pid`
+fi
+
+if [ -f `/home/brubeck/deployment/run/qoorateserver/pid` ]; then
+    pid=`cat /home/brubeck/deployment/run/qoorateserver/pid`
+    kill $pid
+    rm -f `/home/brubeck/deployment/run/qoorateserver/pid`
+fi
