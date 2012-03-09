@@ -10,10 +10,11 @@ The following is assumed for the instructions and configuration to work:
 
 *   MySQL is installed
 *   The data for Qoorate is loaded in a database called `qoorate`
-*   The username and password is qoorate:Q00rate
+*   The MySQL username and password is `qoorate`:`Q00rate`
 *   Apache (or any other web server) is installed and listening to port 8081
 *   A user `deploy` exist with a default bash shell and sudoer capabilities
-*   The server is named beta.qrate.co
+*   The server is named `beta.qrate.co`
+
 create the user with bash as the default shell
 
     $ sudo useradd deploy -m -s /bin/bash
