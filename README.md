@@ -28,13 +28,13 @@ The following is assumed for the instructions and configuration to work:
 
 1.  Login as `deploy`
 
-2.  Run the script [install.sh](https://github.com/qoorate/qooratedeploy/scripts/install.sh)
+2.  Run the script [install.sh](http://github.com/qoorate/qooratedeploy/tree/master/scripts)
 
         $ sudo install.sh
 
 3.  Build `procer`
 
-    Procer is a samll utility bundled, but not compiled, with Mongrel2.
+    Procer is a small utility bundled, but not compiled, with Mongrel2.
     For more information on using `procer` and deployment of Mongrel2 see [Mongrel2 docs - Chapter 4](http://mongrel2.org/static/book-finalch5.html)
 
         $ cd ~/src/mongrel2-1.7.5/examples/procer
@@ -43,7 +43,7 @@ The following is assumed for the instructions and configuration to work:
    Procer does one thing, and well, it makes sure the processes you need running stay up and running.
 
 # Moving qoorateserver and qooratedeploy source to server
-It is not recommended to have deploy pull code directly from github. Instead it is better to pull to the staging server, or your local machine, and rsynch the files to the production server.
+It is not recommended to have deploy pull code directly from github. Instead it is better to pull from github to the staging server, or your local machine, and rsynch the files to the production server.
 
 I cloned the reposiories in the following manner:
 
@@ -56,8 +56,8 @@ NOTE: This assumes git has been properly set up for your user and you have pull 
 So, once you have those repositories on another computer, perform the following from that computer.
 
     $ cd ~/src/qoorateserver
-    $ rsync -r ~/src/qooratedeploy deploy@demo.qrate.co:src/qooratedeploy
-    $ rsync -r ~/src/qoorateserver deploy@demo.qrate.co:src/qoorateserver
+    $ rsync -r ~/src/qooratedeploy deploy@beta.qrate.co:src/
+    $ rsync -r ~/src/qoorateserver deploy@beta.qrate.co:src/
 
 # Creating the deployment directory
 
@@ -76,14 +76,14 @@ The deployment directory will contain the static files to serve, settings and te
         $ cp -R ~/src/qoorateserver/templates ~/deployment/apps/qoorateserver
 
 # Cleaning up
-1.  Make sure all files in `/home/deploy` are owned by deploy
+1.  Make sure all files in `/home/deploy` are owned by `deploy`
         $ sudo chown -R deploy:deploy ~/
 
-1.  Make sure one directoy is owned by root
+1.  Make sure one directory is owned by root
 
         $ sudo chown -R root:root ~/deployment/profiles/mongrel2
 
-    NOTE: This allows procer to `chown` to `/home/deploy/deployment`
+    NOTE: This allows procer to `chown` to `/home/deploy/deployment`, but run mongrel2 and procer as root.
 
 # Starting the server
 There are two scripts that have been written to start/stop the server:
@@ -91,4 +91,5 @@ There are two scripts that have been written to start/stop the server:
         $ ~/deployment/qoorate-start
         $ ~/deployment/qoorate-kill
     
-These scripts need to be run with `sudo`, but do not need to be run by `deploy`
+NOTE: These scripts need to be run with `sudo`, but do not need to be run by `deploy`
+

@@ -6,20 +6,20 @@ app = {
     
     ## The base URI to access the API server
     ## not used yet
-    "QOORATE_API_URI": "http://qoorate.sethmurphy.com/q",
+    "QOORATE_API_URI": "http://beta.qrate.co/q",
 
     ## The URI to the qrate homepage, for humans not machines
-    "QOORATE_URI": "http://qoorate.sethmurphy.com",
+    "QOORATE_URI": "http://beta.qrate.co",
 
     ## Amazon info for linking
-    "S3_IMG_PATH": "https://s3.amazonaws.com/qoorate.brooklyncode/",
+    "S3_IMG_PATH": "https://s3.amazonaws.com/qoorate/",
 
     ## Amazon info needed to insert image into table
     ## not really used right now
-    "AMAZON_BUCKET": 'qoorate.brooklyncode',
+    "AMAZON_BUCKET": 'qoorate',
         
     ## Replace not found images with this value
-    "BROKEN_IMG_URI": "http://qoorate.sethmurphy.com/q/img/blank.gif",
+    "BROKEN_IMG_URI": "http://beta.qrate.co/q/img/blank.gif",
 
     ## Our defaul paging values
     "PARENT_PAGE_SIZE": 5,
@@ -32,9 +32,9 @@ app = {
 
 uploader = {
     ## Amazon info for S3 file uploads
-    "AMAZON_KEY": 'AKIAIMJ3ACDQBKM4PBDQ',
-    "AMAZON_SECRET": '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',
-    "AMAZON_BUCKET": 'qoorate.brooklyncode',
+    "AMAZON_KEY": 'AKIAJMUR4BFN6GKTABHQ',
+    "AMAZON_SECRET": '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',
+    "AMAZON_BUCKET": 'qoorate',
     ## no trailing slash
     "TEMP_UPLOAD_DIR": "tmp",
 
@@ -58,7 +58,7 @@ oauth = {
     "OAUTH_TEST": False,
 
     "REDIS": {
-        "SERVER": "192.168.174.230",
+        "SERVER": "localhost",
         "PORT": 3306,
         "USERNAME": "Q00rate",
         "PASSWORD": "Q00rate",
@@ -71,10 +71,10 @@ oauth = {
             "PROVIDER_NAME": "facebook",
             "PROVIDER_TAG": "fb",
             "OAUTH_VERSION": "2.0",
-            "APP_ID": "240619149352079",
-            "APP_SECRET": "44761cfe50d6dadb473bf40b3a7485c3",
+            "APP_ID": "158516597570602",
+            "APP_SECRET": "ff9fc60abef9c5b83359b25d7bdf279a",
             "SCOPE": "user_about_me, email, user_location, publish_stream",
-            "REDIRECT_URL": "http://qoorate.sethmurphy.com/q/oauth/facebook/callback",
+            "REDIRECT_URL": "http://beta.qrate.co/q/oauth/facebook/callback",
             "REQUEST_URL": "https://www.facebook.com/dialog/oauth",
             "REQUEST_URL_ADDITIONAL_PARAMS": {"display" : "popup"}, 
             "ACCESS_TOKEN_REQUEST_URL": "https://graph.facebook.com/oauth/access_token",
@@ -110,44 +110,18 @@ oauth = {
             },
         },
 
-        "tumblr": {
-            "PROVIDER_NAME": "tumblr",
-            "PROVIDER_TAG": "tb",
-            "OAUTH_VERSION": "1.0a",
-            "CONSUMER_KEY": "DJd7Zw6qJHx0ivkhj0aDMgrRU8UcKMsgUWHPl4oblPI3dvlxJ5",
-            "CONSUMER_SECRET": "zQM3bNw1SSsnzkjacfHwoB4vqgADVxit8WRNbClCO509jmGfCB",
-            "REQUEST_TOKEN_URL": "http://www.tumblr.com/oauth/request_token",
-            "REQUEST_TOKEN_URL_HOST": "http://www.tumblr.com",
-            "REQUEST_TOKEN_URL_PATH": "/oauth/request_token",
-            "AUTHORIZE_URL": "http://www.tumblr.com/oauth/authorize",
-            "ACCESS_TOKEN_URL": "http://www.tumblr.com/oauth/access_token",
-            "CALLBACK_URL": "http://spotichat.com/oauth/tumblr/callback",
-            "USER_INFO": [  
-                ["http://api.tumblr.com/v2/user/info", 
-                    [
-                        ["username", ["user","name"]], 
-                        ["oauth_uid", ["user","name"]],
-                    ],
-                ],
-            ],
-            "ALIASES": [  
-                ["name", ["username"]],
-                ["fullname", ["username"]],
-            ],
-        },
-
         "twitter": {
             "PROVIDER_NAME": "twitter",
             "PROVIDER_TAG": "tw",
             "OAUTH_VERSION": "1.0a",
-            "CONSUMER_KEY": "Rx5YrdsnGslwNEpALTowYA",
-            "CONSUMER_SECRET": "rJ5KZuTfumapW19O4IOdyKq0B5EIyFydGORkCas6Qg",
+            "CONSUMER_KEY": "QE7MXCdniVkCpSScjdmLHA",
+            "CONSUMER_SECRET": "kkFloCK2E595Gsxbo32daOqc8BqNeOQ4KpMvqQIDU",
             "REQUEST_TOKEN_URL": "https://api.twitter.com/oauth/request_token",
             "REQUEST_TOKEN_URL_HOST": "https://api.twitter.com",
             "REQUEST_TOKEN_URL_PATH": "/oauth/request_token",
             "AUTHORIZE_URL": "https://api.twitter.com/oauth/authorize",
             "ACCESS_TOKEN_URL": "https://api.twitter.com/oauth/access_token",
-            "CALLBACK_URL": "http://qoorate.sethmurphy.com/q/oauth/twitter/callback",
+            "CALLBACK_URL": "http://beta.qrate.co/q/oauth/twitter/callback",
             "USER_INFO": [  
                 ["https://api.twitter.com/1/account/verify_credentials.json", 
                     [
@@ -171,7 +145,7 @@ oauth = {
             "APP_ID": "802463031563-f3iks78v6o1a2sir6pq68qsckobg1nm7.apps.googleusercontent.com",
             "APP_SECRET": "ZnRWr4xsCWeetDLPKOE4Y1d1",
             "SCOPE": "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
-            "REDIRECT_URL": "http://qoorate.sethmurphy.com/q/oauth/googleplus/callback",
+            "REDIRECT_URL": "http://beta.qrate.co/q/oauth/googleplus/callback",
             "REQUEST_URL": "https://accounts.google.com/o/oauth2/auth",
             "REQUEST_URL_ADDITIONAL_PARAMS": {"response_type" : "code"},
             "ACCESS_TOKEN_REQUEST_URL": "https://accounts.google.com/o/oauth2/token",
@@ -213,7 +187,7 @@ oauth = {
 mysql = {
     "DEBUG": False,                    ## Not using yet
     "CONNECTION": {
-        "HOST": "192.168.174.230",     ## MySQL Host
+        "HOST": "localhost",           ## MySQL Host
         "PORT": 3306,                  ## MySQL Post
         "USER": "qoorate",             ## MySQL User
         "PASSWORD": "Q00rate",         ## MySQL Password
@@ -415,5 +389,3 @@ mysql = {
         },
     }
 }
-
-# ALTER TABLE `qoorate`.`vote` CHANGE COLUMN `comment_-` `comment` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_unicode_ci' NULL DEFAULT NULL  ;

@@ -1,9 +1,16 @@
-#!/bin/sh
-set -e 
+#!/bin/bash
+
+# set -e 
+
 export DEPLOY_USER_HOME="/home/deploy"
 
+export WORKON_HOME=$DEPLOY_USER_HOME/.virtualenvs
+. /usr/local/bin/virtualenvwrapper.sh
+
+workon qooratedeploy
+
 DEPLOY="$DEPLOY_USER_HOME/deployment"
-export PYTHONPATH="$DEPLOY_USER_HOME/src/qoorateserver/apps:~/src/brubeck"
+export PYTHONPATH="$DEPLOY_USER_HOME/src/qoorateserver/apps:$DEPLOY_USER_HOME/src/brubeck"
   
 cd $DEPLOY
 

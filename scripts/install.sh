@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ##
 ## This installs what is needed to run qoorateserver
 ## server on a production box
@@ -55,9 +55,14 @@ apt-get -y install \
     autoconf \
     libzmq-dev \
     build-essential \
-    ragel\
-    redis\
-    privbind
+    ragel \
+    redis-server \
+    privbind \
+    libjpeg8 \
+    libjpeg62-dev \
+    libfreetype6 \
+    libfreetype6-dev
+    
 
 ##
 ##Gave up on virtualenv for now
@@ -66,22 +71,22 @@ apt-get -y install \
 ## Set up out pip virtual env
 ##
 
-## pip install virtualenv
-## pip install virtualenvwrapper
+sudo pip install virtualenv
+sudo pip install virtualenvwrapper
 
 
-## mkdir ~/.virtualenvs
+mkdir /home/deploy/.virtualenvs
 
-## export WORKON_HOME="~/.virtualenvs"
-## source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME="/home/deploy/.virtualenvs"
+. $(which virtualenvwrapper.sh)
 
-## mkvirtualenv --no-site-packages qooratedeploy
+mkvirtualenv --no-site-packages qooratedeploy
 
-## workon qooratedeploy
+workon qooratedeploy
 
 ## place them in .bashrc so they are always there
-## echo export WORKON_HOME="~/.virtualenvs" >> ~/.bashrc
-## echo source /usr/local/bin/virtualenvwrapper.sh >> ~/.bashrc
+echo export WORKON_HOME="~/.virtualenvs" >> /home/deploy/.bashrc
+echo source $(which virtualenvwrapper.sh) >> /home/deploy/.bashrc
 
 
 ###
@@ -151,34 +156,40 @@ fi
 
 ##
 ## When procer is run securely root is used to start apps, 
-## so we need sudo pip to install system wide packages
-## I don't like this ...
+## you need to activate the qooratedeploy virtualenv in the run file
 ##
 
-sudo pip install Cython==0.15.1
-sudo pip install Jinja2==2.6
-sudo pip install Mako==0.5.0
-sudo pip install dictshield==0.3.6
-sudo pip install py-bcrypt==0.2
-sudo pip install pymongo==2.1
-sudo pip install python-dateutil==2.0
-sudo pip install pyzmq==2.1.11
-sudo pip install ujson==1.15
-sudo pip install greenlet==0.3.2
-sudo pip install gevent==0.13.6
-sudo pip install gevent_zeromq==0.2.2
-sudo pip install brubeck==0.3.7
-sudo pip install BeautifulSoup==3.2.1
-sudo pip install requests==0.10.6
-sudo pip install boto==2.2.2
-sudo pip install redis==2.4.11
-sudo pip install PyMySQL==0.5
+pip install Cython==0.15.1
+pip install Jinja2==2.6
+pip install Mako==0.5.0
+pip install dictshield==0.3.6
+pip install py-bcrypt==0.2
+pip install pymongo==2.1
+pip install python-dateutil==2.0
+pip install pyzmq==2.1.11
+pip install ujson==1.15
+pip install greenlet==0.3.2
+pip install gevent==0.13.6
+pip install gevent_zeromq==0.2.2
+pip install brubeck==0.3.7
+pip install BeautifulSoup==3.2.1
+pip install requests==0.10.6
+pip install boto==2.2.2
+pip install redis==2.4.11
+pip install PyMySQL==0.5
+pip install python-magic==0.4.2
+
+sudo ln -s /usr/lib/i386-linux-gnu/libjpeg.so /usr/lib 
+sudo ln -s /usr/lib/i386-linux-gnu/libfreetype.so /usr/lib
+sudo ln -s /usr/lib/i386-linux-gnu/libz.so /usr/lib
+
+pip install PIL==1.1.7
 
 ###
 ### Brubeck Packages
 ###
-sudo pip install brubeck-oauth==0.0.9
-sudo pip install brubeck-uploader==0.0.9
-sudo pip install brubeck-mysql==0.0.9
+pip install brubeck-oauth==0.0.9
+pip install brubeck-uploader==0.0.9
+pip install brubeck-mysql==0.0.9
 
 
