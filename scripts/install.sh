@@ -62,7 +62,6 @@ apt-get -y install \
     libjpeg62-dev \
     libfreetype6 \
     libfreetype6-dev
-    
 
 ##
 ##Gave up on virtualenv for now
