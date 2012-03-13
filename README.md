@@ -10,11 +10,10 @@ The following is assumed for the instructions and configuration to work:
 
 *   MySQL is installed
 *   The data for Qoorate is loaded in a database called `qoorate`
-*   The MySQL username and password is `qoorate`:`Q00rate`
+*   The username and password is qoorate:Q00rate
 *   Apache (or any other web server) is installed and listening to port 8081
 *   A user `deploy` exist with a default bash shell and sudoer capabilities
-*   The server is named `beta.qrate.co`
-
+*   The server is named beta.qrate.co
 create the user with bash as the default shell
 
     $ sudo useradd deploy -m -s /bin/bash
@@ -31,23 +30,22 @@ add them to sudo (only needed for the installation)
 
 1.  Login as `deploy`
 
-2.  Run the script [install.sh](http://github.com/qoorate/qooratedeploy/tree/master/scripts)
+2.  Run the script [install.sh](https://github.com/qoorate/qooratedeploy/scripts/install.sh)
 
         $ sudo install.sh
 
 3.  Build `procer`
 
-    Procer is a small utility bundled, but not compiled, with Mongrel2.
+    Procer is a samll utility bundled, but not compiled, with Mongrel2.
     For more information on using `procer` and deployment of Mongrel2 see [Mongrel2 docs - Chapter 4](http://mongrel2.org/static/book-finalch5.html)
 
         $ cd ~/src/mongrel2-1.7.5/examples/procer
         $ make clean all && sudo make install
-        $ sudo chown -R deploy:deploy ~/
 
    Procer does one thing, and well, it makes sure the processes you need running stay up and running.
 
 # Moving qoorateserver and qooratedeploy source to server
-It is not recommended to have deploy pull code directly from github. Instead it is better to pull from github to the staging server, or your local machine, and rsynch the files to the production server.
+It is not recommended to have deploy pull code directly from github. Instead it is better to pull to the staging server, or your local machine, and rsynch the files to the production server.
 
 I cloned the reposiories in the following manner:
 
@@ -80,20 +78,50 @@ The deployment directory will contain the static files to serve, settings and te
 
 # Cleaning up
 1.  Make sure all files in `/home/deploy` are owned by deploy
-
         $ sudo chown -R deploy:deploy ~/
 
-2.  Make sure one directoy is owned by root
+2.  Make sure one directoy is owned by root.
 
         $ sudo chown -R root:root ~/deployment/profiles/mongrel2
 
-    NOTE: This allows procer to `chown` to `/home/deploy/deployment`, but run mongrel2 and procer as root.
+    NOTE: This allows procer to `chown` to `/home/deploy/deployment`
 
 # Starting the server
-There are two scripts that have been written to start/stop the server:
+There are two scripts that have been written to start/stop the server.
 
-        $ ~/deployment/qoorate-start
-        $ ~/deployment/qoorate-kill
+        $ ~/deployment/start-qoorate
+        $ ~/deployment/kill-qoorate
     
-NOTE: These scripts need to be run with `sudo`, but do not need to be run by `deploy`
+These scripts need to be run with `sudo`, but do not need to be run by `deploy`.
 
+# Updating code
+1.  Make sure you are in your `virtualenv`.
+
+    $ workon qooratedeploy
+
+2.  Update the Brubeck packages.
+
+    You can update the Brubeck Packages from git directly:
+
+        $ sudo pip install --upgrade -e git+git://github.com/sethmurphy/BrubeckUploader.git#egg=brubeck-uploader
+        $ sudo pip install --upgrade -e git+git://github.com/sethmurphy/BrubeckMySQL.git#egg=brubeck-mysql
+        $ sudo pip install --upgrade -e git+git://github.com/sethmurphy/BrubeckOAuth.git#egg=brubeck-oauth
+
+    or
+
+    Upgrade from PyPi
+
+        $ sudo pip install --upgrade brubeck-uploader
+        $ sudo pip install --upgrade brubeck-mysql
+        $ sudo pip install --upgrade brubeck-oauth
+
+3.  Update your `qoorateserver` code.
+
+    The application code must be pushed from the remote host you pull the source code down to.
+
+        $ rsync -r ~/src/qoorateserver deploy@beta.qrate.co:src
+
+4.  Copy the `static` and `template` content to the applications deployment directory.
+
+        $ cp -R ~/src/qoorateserver/static ~/deployment/apps/qoorateserver
+        $ cp -R ~/src/qoorateserver/templates ~/deployment/apps/qoorateserver
