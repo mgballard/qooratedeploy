@@ -12,11 +12,11 @@ app = {
     "QOORATE_URI": "http://beta.qrate.co",
 
     ## Amazon info for linking
-    "S3_IMG_PATH": "https://s3.amazonaws.com/qoorate/",
+    "S3_IMG_PATH": "https://s3.amazonaws.com/<<bucket>>/",
 
     ## Amazon info needed to insert image into table
     ## not really used right now
-    "AMAZON_BUCKET": 'qoorate',
+    "AMAZON_BUCKET": '<<bucket>>',
         
     ## Replace not found images with this value
     "BROKEN_IMG_URI": "http://beta.qrate.co/q/img/blank.gif",
@@ -32,9 +32,9 @@ app = {
 
 uploader = {
     ## Amazon info for S3 file uploads
-    "AMAZON_KEY": 'AKIAJMUR4BFN6GKTABHQ',
-    "AMAZON_SECRET": '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',
-    "AMAZON_BUCKET": 'qoorate',
+    "AMAZON_KEY": '<<key>>',
+    "AMAZON_SECRET": '<<secret>>',
+    "AMAZON_BUCKET": '<<bucket>>',
     ## no trailing slash
     "TEMP_UPLOAD_DIR": "tmp",
 
@@ -60,9 +60,9 @@ oauth = {
     "REDIS": {
         "SERVER": "localhost",
         "PORT": 3306,
-        "USERNAME": "Q00rate",
-        "PASSWORD": "Q00rate",
-        "DATABASE": "qoorate",
+        "USERNAME": "<<username>>",
+        "PASSWORD": "<<password>>",
+        "DATABASE": "<<db>>",
     },
 
     # Configuration of supported providers
@@ -71,8 +71,8 @@ oauth = {
             "PROVIDER_NAME": "facebook",
             "PROVIDER_TAG": "fb",
             "OAUTH_VERSION": "2.0",
-            "APP_ID": "158516597570602",
-            "APP_SECRET": "ff9fc60abef9c5b83359b25d7bdf279a",
+            "APP_ID": "<<APPID>>",
+            "APP_SECRET": "<<APPSECRET>>",
             "SCOPE": "user_about_me, email, user_location, publish_stream",
             "REDIRECT_URL": "http://beta.qrate.co/q/oauth/facebook/callback",
             "REQUEST_URL": "https://www.facebook.com/dialog/oauth",
@@ -94,12 +94,12 @@ oauth = {
             ],
 
             "TEST_OAUTH_DATA": { 
-                "username": "sethmurph", 
+                "username": "<<USERNAME>>", 
                 "first_name": "Seth", 
                 "last_name": "Murphy", 
                 "verified": True, 
                 "name": "Seth Murphy", 
-                "access_token": "AAADp76u74OwBAOkELCi8wtbD4YBiPBpHIhYkZBZCKIzFjm49Jrq6NNAZAJN9ZCSvXvNEnjTdED1nW6VdZCcZAlpkZB2ZBi5dvB6MeQeqaoZBGm2UscZB2MLb2p", 
+                "access_token": "<<TOKEN>>", 
                 "expires": "6021", 
                 "updated_time": "2011-12-26T11:18:15+0000", 
                 "locale": "en_US", 
@@ -114,8 +114,8 @@ oauth = {
             "PROVIDER_NAME": "twitter",
             "PROVIDER_TAG": "tw",
             "OAUTH_VERSION": "1.0a",
-            "CONSUMER_KEY": "QE7MXCdniVkCpSScjdmLHA",
-            "CONSUMER_SECRET": "kkFloCK2E595Gsxbo32daOqc8BqNeOQ4KpMvqQIDU",
+            "CONSUMER_KEY": "<<CONSUMERKEY>>",
+            "CONSUMER_SECRET": "<<SECRET>>",
             "REQUEST_TOKEN_URL": "https://api.twitter.com/oauth/request_token",
             "REQUEST_TOKEN_URL_HOST": "https://api.twitter.com",
             "REQUEST_TOKEN_URL_PATH": "/oauth/request_token",
@@ -142,8 +142,8 @@ oauth = {
             "PROVIDER_NAME": "googleplus",
             "PROVIDER_TAG": "gp",
             "OAUTH_VERSION": "2.0",
-            "APP_ID": "802463031563-f3iks78v6o1a2sir6pq68qsckobg1nm7.apps.googleusercontent.com",
-            "APP_SECRET": "ZnRWr4xsCWeetDLPKOE4Y1d1",
+            "APP_ID": "<<APPID>>,
+            "APP_SECRET": "<<APPSECRET>>",
             "SCOPE": "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
             "REDIRECT_URL": "http://beta.qrate.co/q/oauth/googleplus/callback",
             "REQUEST_URL": "https://accounts.google.com/o/oauth2/auth",
@@ -189,9 +189,9 @@ mysql = {
     "CONNECTION": {
         "HOST": "localhost",           ## MySQL Host
         "PORT": 3306,                  ## MySQL Post
-        "USER": "qoorate",             ## MySQL User
-        "PASSWORD": "Q00rate",         ## MySQL Password
-        "DATABASE": "qoorate",         ## Database Name
+        "USER": "<<USERNAME>>",             ## MySQL User
+        "PASSWORD": "<<PASSWORD>>",         ## MySQL Password
+        "DATABASE": "<<DB>>",         ## Database Name
         "COLLATION": 'utf8',           ## Database Collation
     },
     "TABLES": { ## Just used to alias fields instead of changing them in the database for now
